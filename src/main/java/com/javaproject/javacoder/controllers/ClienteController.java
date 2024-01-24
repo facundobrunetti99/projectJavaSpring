@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaproject.javacoder.models.Cliente;
-import com.javaproject.javacoder.repository.Repository;
+import com.javaproject.javacoder.repository.ClienteRepository;
+
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,9 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-public class Controller {
+public class ClienteController {
 
-    @Autowired Repository repo;
+    @Autowired ClienteRepository repo;
     @GetMapping
     public String index(){
         return "Conectado";
