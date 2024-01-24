@@ -8,32 +8,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.javaproject.javacoder.models.Cliente;
 import com.javaproject.javacoder.models.Ventas;
 import com.javaproject.javacoder.repository.VentaRepository;
 
 @RestController
 public class VentaController {
 
-    @Autowired VentaRepository repo;
-    @GetMapping
-    public String index(){
-        return "Conectado";
-    }
+    @Autowired private VentaRepository repo;
 
-    @GetMapping("Ventas")
+
+    @GetMapping("ventas")
     public List<Ventas> getVentas(){
        return  repo.findAll();
     }
-      @PostMapping("alta")
+      @PostMapping("venta/alta")
     public String post(@RequestBody Ventas venta){
         repo.save(venta);
         return "Alta Venta";
     }
 
 
-    @PutMapping("modificar/{id}")
+    @PutMapping("venta/modificar/{id}")
         public String update(@PathVariable Long id, @RequestBody Ventas venta){
             Ventas updateVentas = repo.findById(id).get();
             updateVentas.setTipoVenta(venta.getTipoVenta());
@@ -42,7 +37,7 @@ public class VentaController {
             return "Modificado";
         }
 
-    @DeleteMapping("Eliminar/{id}")   
+    @DeleteMapping("venta/eliminar/{id}")   
     public String delete(@PathVariable Long id){
         Ventas deleteVenta =repo.findById(id).get();
         repo.delete(deleteVenta);

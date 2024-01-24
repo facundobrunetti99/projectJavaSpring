@@ -20,24 +20,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 public class ClienteController {
 
-    @Autowired ClienteRepository repo;
-    @GetMapping
-    public String index(){
-        return "Conectado";
-    }
+    @Autowired 
+    private ClienteRepository repo;
 
     @GetMapping("clientes")
     public List<Cliente> getClientes(){
        return repo.findAll();
     }
 
-    @PostMapping("alta")
+    @PostMapping("cliente/nuevo")
     public String post(@RequestBody Cliente cliente){
         repo.save(cliente);
         return "resuelto";
     }
     
-    @PutMapping("modificar/{id}")
+    @PutMapping("cliente/modificar/{id}")
         public String update(@PathVariable Long id, @RequestBody Cliente cliente){
             Cliente updateCliente = repo.findById(id).get();
             updateCliente.setNombre(cliente.getNombre());
@@ -46,7 +43,7 @@ public class ClienteController {
             return "Modificado";
         }
 
-    @DeleteMapping("Eliminar/{id}")   
+    @DeleteMapping("cliente/eliminar/{id}")   
     public String delete(@PathVariable Long id){
         Cliente deleteCliente =repo.findById(id).get();
         repo.delete(deleteCliente);
