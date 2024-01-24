@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.javaproject.javacoder.models.Ventas;
 import com.javaproject.javacoder.repository.VentaRepository;
-
 @RestController
 public class VentaController {
 

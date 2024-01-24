@@ -1,9 +1,12 @@
 package com.javaproject.javacoder.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Producto {
@@ -13,6 +16,9 @@ public class Producto {
 
     private Long id;
 
+     @ManyToOne(fetch = FetchType.LAZY)
+     @JoinColumn(name="id_venta")
+     private Ventas venta;   
 
     public Long getId() {
         return id;
@@ -51,4 +57,5 @@ public class Producto {
     @Column(name="cantidad")
     private int cantidad;
 
+    
 }
