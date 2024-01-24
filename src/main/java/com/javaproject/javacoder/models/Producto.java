@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Cliente {
+public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,16 +30,25 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getCorreo() {
-        return correo;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     @Column(name="Nombre")
     private String nombre;
-    @Column(name="Correo")
-    private String correo;
+    @Column(name="precio")
+    private float precio;
+    @Column(name="cantidad")
+    private int cantidad;
 
 }
