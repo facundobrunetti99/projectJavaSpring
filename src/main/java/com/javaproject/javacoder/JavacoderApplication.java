@@ -6,5 +6,4 @@ public class JavacoderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JavacoderApplication.class, args);
 	}
-
 }

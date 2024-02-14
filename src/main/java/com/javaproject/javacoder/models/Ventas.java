@@ -1,4 +1,5 @@
 package com.javaproject.javacoder.models;
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,10 +18,11 @@ public class Ventas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-
-
+    
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "venta",cascade = CascadeType.ALL)
-    List<Producto> productos;
+    private List<Producto> productos = new ArrayList<>();
+
+   
 
     @OneToOne(mappedBy = "venta")
     private Cliente cliente;
@@ -40,6 +42,7 @@ public class Ventas {
 
     public void setTipoVenta(String TipoVenta) {
         this.TipoVenta = TipoVenta;
+       
     }
 
     public Float getMonto() {
@@ -49,11 +52,15 @@ public class Ventas {
     public void setMonto(Float monto) {
         this.monto = monto;
     }
+
+
     @Column(name="TipoVenta")
     private String TipoVenta;
     @Column(name="Monto")
     private Float monto;
 
-   
-    
+
+  
+
 }
+
